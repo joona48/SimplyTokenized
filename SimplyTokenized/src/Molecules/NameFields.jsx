@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const NameFields = () => (
-  <div className="flex flex-wrap sm:flex-nowrap gap-4">
+  <div className="flex flex-wrap sm:flex-nowrap gap-4 block text-sm font-medium text-gray-700 mb-1">
     <div className="w-full sm:w-1/2">
       <Label htmlFor="firstName">First Name</Label>
       <Input id="firstName" placeholder="First Name" />

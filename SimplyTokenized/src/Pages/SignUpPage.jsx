@@ -1,20 +1,16 @@
-// File: src/pages/SignUpPage.jsx
 import React from "react";
 import AuthTemplate from "../Templates/AuthTemplate";
 import SignUpForm from "../Organisms/SignUpForm";
 
 const SignUpPage = () => (
-  <div className="h-screen overflow-y-auto">
+  <div className="relative h-screen overflow-y-auto">
     <AuthTemplate
       title="Sign Up"
       subtitle="Build and circulate your own custom token easily using our SimplyTokenized platform"
+      titleClassName="aut-font-bold aut-mb-2 aut-text-left aut-text-xl lg:aut-text-3xl"
     >
-      <SignUpForm />
-      <div className="text-sm mt-6 text-center">
-        By continuing you agree to our{" "}
-        <a href="#" className="text-blue-600">
-          Terms of Service
-        </a>
+      <div className="pb-24">
+        <SignUpForm />
       </div>
     </AuthTemplate>
   </div>

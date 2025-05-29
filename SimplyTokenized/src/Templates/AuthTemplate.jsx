@@ -14,7 +14,7 @@ const AuthTemplate = ({ title, subtitle, children }) => (
           <div className="mt-32 w-full flex flex-col items-center px-4">
             <div className="bg-white rounded-lg shadow-lg w-[90%] max-w-[525px] p-8">
               <h2 className="font-bold mb-2 text-xl lg:text-3xl">{title}</h2>
-              <p className="text-sm mb-4">{subtitle}</p>
+              <p className="text-sm mb-4 border-b pb-2">{subtitle}</p>
               {children}
             </div>
             <div className="px-6 text-center">
