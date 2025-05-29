@@ -9,7 +9,9 @@ import {
 const LanguageSelector = ({ value, onChange }) => {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="h-12 w-20 text-sm capitalize" />
+      <SelectTrigger className="h-12 w-20 text-sm capitalize">
+        {value.toUpperCase()}
+      </SelectTrigger>
       <SelectContent>
         <SelectItem value="en">EN</SelectItem>
         <SelectItem value="de">DE</SelectItem>

@@ -10,7 +10,7 @@ const HeaderBar = () => {
       {/* Logo */}
       <div className="hidden lg:block text-right">
         <img
-          src="/images/logoSimplyTokenized.png"
+          src="/Image/Simplyimage.png"
           alt="SimplyToken Logo"
           className="w-[242px] h-[45px] opacity-90"
         />

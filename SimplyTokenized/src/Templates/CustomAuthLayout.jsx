@@ -13,7 +13,7 @@ const CustomAuthLayout = ({ title, subtitle, children, footer }) => (
           <HeaderBar />
           <div className="mt-32 w-full flex flex-col items-center px-4">
             {/* Sign-in box */}
-            <div className="bg-white rounded-lg shadow-lg w-[90%] max-w-[525px] p-8">
+            <div className="bg-white rounded-lg shadow-lg w-[90%] max-w-[525px] p-8 z-[1] relative">
               <h2 className="font-bold mb-2 text-xl lg:text-3xl">{title}</h2>
               <p className="text-sm mb-4">{subtitle}</p>
               {children}
