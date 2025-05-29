@@ -9,7 +9,7 @@ const SignUpPage = () => (
       subtitle="Build and circulate your own custom token easily using our SimplyTokenized platform"
       titleClassName="aut-font-bold aut-mb-2 aut-text-left aut-text-xl lg:aut-text-3xl"
     >
-      <div className="pb-24">
+      <div className="pb-12">
         <SignUpForm />
       </div>
     </AuthTemplate>
