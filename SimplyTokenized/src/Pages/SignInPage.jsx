@@ -18,7 +18,7 @@ export default function SignInPage() {
     >
       <div className="text-left space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-400">
             Email<span className="text-red-500">*</span>
           </label>
           <input
@@ -29,7 +29,7 @@ export default function SignInPage() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-400">
             Password<span className="text-red-500">*</span>
           </label>
           <input
