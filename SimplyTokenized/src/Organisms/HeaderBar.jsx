@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import LanguageSelector from "../Molecules/LanguageSelector";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
-const HeaderBar = () => {
+const HeaderBar = ({ prompt, buttonLabel, buttonLink }) => {
   const [language, setLanguage] = useState("en");
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-wrap justify-between items-center w-full absolute top-6 px-3 mb-10">
@@ -23,15 +25,16 @@ const HeaderBar = () => {
         />
       </div>
 
-      {/* Sign In & Language Selector */}
+      {/* Right section */}
       <div className="text-right flex flex-col sm:flex-row items-end sm:items-center gap-3">
         <div className="flex items-center text-sm text-gray-600">
-          Already a user?
+          {prompt}
           <Button
             variant="outline"
+            onClick={() => navigate(buttonLink)}
             className="ml-2 text-[#0086C9] border-[#0086C9] hover:bg-white"
           >
-            Sign In
+            {buttonLabel}
           </Button>
         </div>
         <LanguageSelector value={language} onChange={setLanguage} />
