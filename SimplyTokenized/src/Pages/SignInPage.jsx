@@ -24,7 +24,7 @@ export default function SignInPage() {
           <input
             type="email"
             placeholder="Email"
-            className="w-full mt-1 p-2 border rounded-md"
+            className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-white"
           />
         </div>
 
