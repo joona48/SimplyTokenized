@@ -17,7 +17,7 @@ const HeaderBar = () => {
       </div>
       <div className="lg:hidden px-1 text-center">
         <img
-          src="/images/logoIcon.png"
+          src="/Images/Simplyimage.png"
           alt="SimplyToken Logo"
           className="w-[50px] h-[45px] opacity-90"
         />
