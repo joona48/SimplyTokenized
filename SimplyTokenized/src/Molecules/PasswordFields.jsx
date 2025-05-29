@@ -2,55 +2,47 @@ import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const PasswordFields = () => {
+const PasswordFields = ({ register, errors }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   return (
     <div className="space-y-6">
       <div className="relative">
-        <Label
-          htmlFor="password"
-          className="block text-sm font-semibold text-gray-800"
-        >
-          Password <span className="text-red-500">*</span>
-        </Label>
+        <Label htmlFor="password">Password <span className="text-red-500">*</span></Label>
         <Input
           id="password"
           type={showPassword ? "text" : "password"}
+          {...register("password")}
           placeholder="Password"
-          className="mt-1 border-b border-gray-300 pb-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 transition-colors placeholder-gray-400"
-          required
+          className="mt-1 border-b pb-2"
         />
         <button
           type="button"
-          onClick={() => setShowPassword(!showPassword)}
+          onClick={() => setShowPassword((p) => !p)}
           className="absolute right-2 top-9 text-gray-500 text-sm"
         >
-          
+          {showPassword ? "Hide" : "Show"}
         </button>
+        {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
       </div>
       <div className="relative">
-        <Label
-          htmlFor="confirmPassword"
-          className="block text-sm font-semibold text-gray-800"
-        >
-          Confirm Password <span className="text-red-500">*</span>
-        </Label>
+        <Label htmlFor="confirmPassword">Confirm Password <span className="text-red-500">*</span></Label>
         <Input
           id="confirmPassword"
-          type={showConfirmPassword ? "text" : "password"}
+          type={showConfirm ? "text" : "password"}
+          {...register("confirmPassword")}
           placeholder="Confirm Password"
-          className="mt-1 border-b border-gray-300 pb-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 transition-colors placeholder-gray-400"
-          required
+          className="mt-1 border-b pb-2"
         />
         <button
           type="button"
-          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+          onClick={() => setShowConfirm((p) => !p)}
           className="absolute right-2 top-9 text-gray-500 text-sm"
         >
-          
+          {showConfirm ? "Hide" : "Show"}
         </button>
+        {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}
       </div>
     </div>
   );
