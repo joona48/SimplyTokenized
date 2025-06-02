@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
         <SidebarToggle isOpen={isOpen} onToggle={onToggle} />
       </div>
       <nav className="mt-4 space-y-2">
-        <Link to="/offerings" className={linkClass("/offerings")}>
+        <Link to="/Dashboard" className={linkClass("/offerings")}>
           <Tag className="mr-2 h-5 w-5" />
           {isOpen && "Offerings"}
         </Link>
