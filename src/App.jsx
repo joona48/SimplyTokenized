@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./Pages/Dashboard";
+import Offerings from "./Pages/Offerings";
 
 import SignUpPage from "./Pages/SignUpPage";
 import SignInPage from "./Pages/SignInPage";
@@ -20,7 +20,8 @@ const App = () => {
         <Route path="/" element={<SignInPage />} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        
+        <Route path="/offerings" element={<Offerings />} />
       </Routes>
     </Router>
   );

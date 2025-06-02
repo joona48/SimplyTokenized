@@ -1,20 +1,37 @@
+// src/Organisms/DashboardLayout.jsx
 import React from "react";
-import DashboardLayout from "../Organisms/DashboardLayout";
+import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+export default function DashboardLayout({ children }) {
   return (
-    <DashboardLayout>
-      <div className="bg-white shadow p-8 rounded-lg max-w-2xl w-full text-center">
-        <h1 className="text-2xl font-bold mb-4">Start building your first Offer</h1>
-        <p className="text-gray-600">
-          You haven’t created any offers yet! Create and publish your token with simple steps.
-        </p>
-        <button className="mt-6 bg-[#0094d8] hover:bg-[#007bb3] text-white font-semibold py-2 px-6 rounded">
-          Create your first offer
-        </button>
-      </div>
-    </DashboardLayout>
-  );
-};
+    <div className="min-h-screen flex">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white shadow-md p-6">
+        <div className="text-2xl font-bold text-[#0094d8] mb-6">
+          Simply<span className="text-gray-800">Tokenized</span>
+        </div>
+        <nav className="space-y-4">
+          <Link to="/offerings" className="block hover:text-[#0094d8]">🏷️ Offerings</Link>
+          <Link to="/token-store" className="block hover:text-[#0094d8]">🧊 Token Store</Link>
+          <Link to="/accounts" className="block hover:text-[#0094d8]">🏢 Accounts</Link>
+        </nav>
+      </aside>
 
-export default Dashboard;
+      {/* Main content */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Bar */}
+        <header className="bg-cyan-500 text-white px-6 py-4 shadow">
+          <div className="flex justify-between items-center">
+            <h1 className="text-xl font-semibold">Dashboard</h1>
+            <div className="rounded-full bg-white text-cyan-500 w-8 h-8 flex items-center justify-center font-bold">R</div>
+          </div>
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 p-6 bg-gray-100">
+          <div className="max-w-4xl mx-auto">{children}</div>
+        </main>
+      </div>
+    </div>
+  );
+}
