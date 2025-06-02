@@ -2,7 +2,7 @@
 import React from "react";
 import DashboardLayout from "../Organisms/DashboardLayout";
 
-const Offerings = () => {
+const Dashboard = () => {
   return (
     <DashboardLayout>
       <div className="bg-white p-6 rounded shadow">
@@ -16,4 +16,4 @@ const Offerings = () => {
   );
 };
 
-export default Offerings;
+export default Dashboard;

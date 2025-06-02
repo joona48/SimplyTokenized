@@ -52,7 +52,7 @@ export default function SignInPage() {
         console.log("ID Token:", idToken);
 
         // Redirect to dashboard
-        navigate("/dashboard");
+        navigate("/Dashboard");
       } catch (error) {
         console.error("Firebase error:", error.message);
         setFirebaseError(error.message);
