@@ -14,13 +14,27 @@ const Sidebar = ({ isOpen, onToggle }) => {
     }`;
 
   return (
-    <div className={`bg-white shadow-md h-full ${isOpen ? "w-64" : "w-16"} transition-all duration-300`}>
+    <div
+      className={`bg-white shadow-md h-full ${
+        isOpen ? "w-64" : "w-20"
+      } transition-all duration-300 flex flex-col`}
+    >
       <div className="flex items-center justify-between px-4 py-4 border-b">
-        {isOpen && <span className="font-semibold">Rajagiri</span>}
-        <SidebarToggle isOpen={isOpen} onToggle={onToggle} />
+  <div className="flex items-center gap-2">
+    {!isOpen && (
+      <div className="rounded-full bg-cyan-500 text-white w-8 h-8 flex items-center justify-center font-bold">
+        R
       </div>
+    )}
+    <SidebarToggle isOpen={isOpen} onToggle={onToggle} />
+    {isOpen && (
+      <span className="text-lg font-semibold text-gray-700 ml-2">Rajagiri</span>
+    )}
+  </div>
+</div>
+
       <nav className="mt-4 space-y-2">
-        <Link to="/Dashboard" className={linkClass("/offerings")}>
+        <Link to="/dashboard" className={linkClass("/dashboard")}>
           <Tag className="mr-2 h-5 w-5" />
           {isOpen && "Offerings"}
         </Link>

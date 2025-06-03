@@ -3,7 +3,7 @@ import DashboardLayout from "../Organisms/DashboardLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const TokenStore = () => {
+const TokensStore = () => {
   const navigate = useNavigate();
 
   const handleOrderClick = () => {
@@ -39,4 +39,4 @@ const TokenStore = () => {
   );
 };
 
-export default TokenStore;
+export default TokensStore;
