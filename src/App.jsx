@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
-import TokenStore from "./Pages/TokenStore";
+
 import SignUpPage from "./Pages/SignUpPage";
 import SignInPage from "./Pages/SignInPage";
 
@@ -22,7 +22,6 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/tokenstore" element={<TokenStore/>}/>
       </Routes>
     </Router>
   );
