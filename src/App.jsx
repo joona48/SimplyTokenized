@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./Pages/Dashboard";
-
-import SignUpPage from "./Pages/SignUpPage";
-import SignInPage from "./Pages/SignInPage";
+import FireblocksForm from "./Pages/FireblocksForm";
+import TokenStore from "./Pages/TokenStore"; // Make sure this is imported
 
 const App = () => {
   useEffect(() => {
@@ -17,11 +15,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SignInPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<TokenStore />} />
+        <Route path="/token-store" element={<TokenStore />} />
+        <Route path="/fireblocks-form" element={<FireblocksForm />} />
       </Routes>
     </Router>
   );
