@@ -3,20 +3,23 @@ import DashboardLayout from "../Organisms/DashboardLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const TokensStore = () => {
+const TokensStore = ({ type = "fireblocks" }) => {
   const navigate = useNavigate();
 
+  const title = type === "custom" ? "ERC20 Custom" : "Fireblocks ERC20";
+  const route = type === "custom" ? "/fireblocks-form?type=custom" : "/fireblocks-form?type=fireblocks";
+
   const handleOrderClick = () => {
-    navigate("/fireblocks-form");
+    navigate(route);
   };
 
   return (
     <DashboardLayout>
       <div className="p-4">
         <div className="flex justify-center">
-          <Card className="w-[600px]"> {/* Slightly wider */}
+          <Card className="w-[600px]">
             <div className="flex justify-between items-center px-4 pt-4">
-              <h3 className="text-lg font-bold">Fireblocks ERC20</h3>
+              <h3 className="text-lg font-bold">{title}</h3>
               <Button
                 className="bg-blue-400 text-white hover:bg-blue-700"
                 onClick={handleOrderClick}

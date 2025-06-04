@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import DashboardLayout from "../Organisms/DashboardLayout";
 import { Button } from "@/components/ui/button";
@@ -20,33 +21,30 @@ const FireblocksForm = () => {
 
   const showTokenInput = agreeTerms && existingToken;
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const type = queryParams.get("type") || "fireblocks";
+  const title = type === "custom" ? "ERC20 Custom" : "Fireblocks ERC20";
+
   return (
     <DashboardLayout>
       <div className="p-6">
         <div className="flex items-start justify-between">
-          <h2 className="text-2xl font-semibold">Fireblocks ERC20</h2>
+          <h2 className="text-2xl font-semibold">{title}</h2>
           <div className="w-[500px] bg-white rounded-xl shadow-md p-6 space-y-6 ml-32">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label className="text-gray-600 mb-1 block">Token Name</Label>
-                <input
-                     type="text"
-                     className="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-white"
-/>
+                <input type="text" className={sharedStyle} />
               </div>
               <div>
                 <Label className="text-gray-600 mb-1 block">Symbol</Label>
-                <input
-                     type="text"
-                     className="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-white"
-/>
+                <input type="text" className={sharedStyle} />
               </div>
             </div>
 
             <div>
-              <Label className="text-gray-600 mb-1 block">
-                Select Minting Platform
-              </Label>
+              <Label className="text-gray-600 mb-1 block">Select Minting Platform</Label>
               <Select defaultValue="native">
                 <SelectTrigger className={sharedStyle}>
                   <SelectValue placeholder="Select platform" />
@@ -107,13 +105,8 @@ const FireblocksForm = () => {
                 />
                 <Label htmlFor="terms" className="text-sm">
                   I confirm the{" "}
-                  <a className="text-blue-600 underline" href="#">
-                    Terms of service
-                  </a>{" "}
-                  and{" "}
-                  <a className="text-blue-600 underline" href="#">
-                    Privacy Disclaimer
-                  </a>
+                  <a className="text-blue-600 underline" href="#">Terms of service</a> and{" "}
+                  <a className="text-blue-600 underline" href="#">Privacy Disclaimer</a>
                 </Label>
               </div>
               <div className="flex items-start space-x-2">
@@ -132,9 +125,7 @@ const FireblocksForm = () => {
             {showTokenInput && (
               <div>
                 <Label className="text-gray-600 mb-1 block">Token Address</Label>
-                <input
-                  className={sharedStyle}
-                />
+                <input className={sharedStyle} />
               </div>
             )}
 

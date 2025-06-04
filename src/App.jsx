@@ -19,17 +19,18 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SignInPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+    <Routes>
+  <Route path="/" element={<SignInPage />} />
+  <Route path="/signin" element={<SignInPage />} />
+  <Route path="/signup" element={<SignUpPage />} />
+  <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/token-store" element={<TokensStore />} />
-        <Route path="/fireblocks-form" element={<FireblocksForm />} />
-      </Routes>
-    </Router>
+  <Route path="/custom-token" element={<TokensStore type="custom" />} />
+  <Route path="/token-store" element={<TokensStore type="fireblocks" />} />
+
+  <Route path="/fireblocks-form" element={<FireblocksForm />} />
+</Routes>
+
   );
 };
 
