@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderBar from "../Organisms/HeaderBar";
 
 // Encoded SVG background as a data URI
@@ -13,7 +14,13 @@ const CustomAuthLayout = ({ title, subtitle, children, footer }) => (
           className="flex flex-col items-center justify-center min-h-screen w-full relative bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: svgBackground }}
         >
-          <HeaderBar />
+          
+          <HeaderBar
+            prompt="Don’t have an account?"
+            buttonLabel="Sign Up"
+            buttonLink="/signup"
+          />
+
           <div className="mt-32 w-full flex flex-col items-center px-4">
             <div className="bg-white rounded-lg shadow-lg w-[90%] max-w-[525px] p-8">
               <h2 className="font-bold mb-2 text-xl lg:text-3xl">{title}</h2>

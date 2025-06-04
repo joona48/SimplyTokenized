@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { z } from "zod";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import CustomAuthLayout from "../Templates/CustomAuthLayout";
 
 const signInSchema = z.object({
@@ -10,19 +13,22 @@ const signInSchema = z.object({
 export default function SignInPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
+  const [firebaseError, setFirebaseError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors((prev) => ({ ...prev, [e.target.name]: undefined })); // clear error on change
+    setErrors((prev) => ({ ...prev, [e.target.name]: undefined }));
+    setFirebaseError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validation = signInSchema.safeParse(formData);
 
     if (!validation.success) {
-      // Map zod errors to your errors state
       const fieldErrors = {};
       validation.error.errors.forEach((err) => {
         if (err.path && err.path[0]) {
@@ -32,8 +38,25 @@ export default function SignInPage() {
       setErrors(fieldErrors);
     } else {
       setErrors({});
-      // Proceed with login - formData.email, formData.password are valid
-      console.log("Validated data:", validation.data);
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          formData.email,
+          formData.password
+        );
+
+        const user = userCredential.user;
+        const idToken = await user.getIdToken();
+
+        console.log("Sign-in successful:", user.uid);
+        console.log("ID Token:", idToken);
+
+        // Redirect to dashboard
+        navigate("/Dashboard");
+      } catch (error) {
+        console.error("Firebase error:", error.message);
+        setFirebaseError(error.message);
+      }
     }
   };
 
@@ -60,7 +83,7 @@ export default function SignInPage() {
             name="email"
             type="email"
             placeholder="Email"
-            className={`w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-white ${
+            className={`w-full mt-1 p-2 border rounded-md focus:outline-none ${
               errors.email ? "border-red-500" : "border-gray-300"
             }`}
             value={formData.email}
@@ -79,7 +102,7 @@ export default function SignInPage() {
             name="password"
             type="password"
             placeholder="Password"
-            className={`w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-1 focus:ring-offset-white ${
+            className={`w-full mt-1 p-2 border rounded-md focus:outline-none ${
               errors.password ? "border-red-500" : "border-gray-300"
             }`}
             value={formData.password}
@@ -89,6 +112,10 @@ export default function SignInPage() {
             <p className="text-red-500 text-xs mt-1">{errors.password}</p>
           )}
         </div>
+
+        {firebaseError && (
+          <p className="text-red-500 text-sm mt-2">{firebaseError}</p>
+        )}
 
         <div className="text-left text-sm text-blue-600 mt-2 mb-4 cursor-pointer">
           Forgot Password?
@@ -104,4 +131,3 @@ export default function SignInPage() {
     </CustomAuthLayout>
   );
 }
-
