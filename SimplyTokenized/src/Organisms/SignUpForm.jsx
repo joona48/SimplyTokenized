@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../firebase"; //  Ensure db is exported from firebase.js
-import { doc, setDoc } from "firebase/firestore"; 
+import { auth, db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 import NameFields from "../Molecules/NameFields";
 import EmailField from "../Molecules/EmailField";
@@ -30,6 +31,8 @@ const schema = z
   });
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -48,7 +51,7 @@ const SignUpForm = () => {
 
       const user = userCredential.user;
 
-      // ✅ Save additional user data in Firestore
+      // Save user info in Firestore
       await setDoc(doc(db, "users", user.uid), {
         firstName: data.firstName,
         lastName: data.lastName,
@@ -56,7 +59,17 @@ const SignUpForm = () => {
         createdAt: new Date().toISOString(),
       });
 
-      alert("Signup successful!");
+      // Store in localStorage for use in UI (like UserMenu)
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          name: `${data.firstName} ${data.lastName}`,
+          email: data.email,
+        })
+      );
+
+      // ✅ Redirect to Dashboard
+      navigate("/Dashboard");
     } catch (error) {
       console.error("Signup failed:", error.message);
       alert(`Signup failed: ${error.message}`);

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { z } from "zod";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import CustomAuthLayout from "../Templates/CustomAuthLayout";
 
@@ -46,12 +47,20 @@ export default function SignInPage() {
         );
 
         const user = userCredential.user;
-        const idToken = await user.getIdToken();
 
-        console.log("Sign-in successful:", user.uid);
-        console.log("ID Token:", idToken);
+        // 🔍 Get additional user info from Firestore
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
 
-        // Redirect to dashboard
+          // 💾 Store in localStorage
+          localStorage.setItem("user", JSON.stringify({
+            name: `${userData.firstName} ${userData.lastName}`,
+            email: userData.email,
+          }));
+        }
+
+        // ✅ Redirect to dashboard
         navigate("/Dashboard");
       } catch (error) {
         console.error("Firebase error:", error.message);
