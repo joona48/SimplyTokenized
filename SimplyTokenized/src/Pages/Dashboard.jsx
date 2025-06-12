@@ -20,14 +20,26 @@ const Dashboard = () => {
       </p>
 
       <div className="flex justify-center">
-        <button
-          onClick={handleCreateOffer}
-          className="flex items-center justify-center gap-2 text-lg font-bold bg-[#0094d8] hover:bg-[#16263f] text-white rounded-md px-6 py-3 mt-4 w-xl h-12 transition-all duration-300 leading-[0.4]"
-        >
-          <i className="icon-plus mr-2"></i>
-          Create your first offer
-        </button>
-      </div>
+  <button
+    onClick={handleCreateOffer}
+    className="flex items-center justify-center gap-2 text-lg font-bold bg-[#0094d8] hover:bg-[#16263f] text-white rounded-md px-6 py-3 mt-4 w-xl h-12 transition-all duration-300 leading-[0.4]"
+  >
+    <i className="icon-plus mr-2"></i>
+    Create your first offer
+  </button>
+</div>
+
+{/* New Mint Button */}
+<div className="flex justify-center">
+  <button
+    onClick={() => navigate("/mint")}
+    className="flex items-center justify-center gap-2 text-lg font-bold bg-[#0094d8] hover:bg-[#16263f] text-white rounded-md px-6 py-3 mt-4 w-xl h-12 transition-all duration-300 leading-[0.4]"
+  >
+    <i className="icon-plus mr-2"></i>
+    Mint Token
+  </button>
+</div>
+
     </DashboardLayout>
   );
 };

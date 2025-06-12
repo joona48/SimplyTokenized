@@ -8,6 +8,7 @@ import SignInPage from "./Pages/SignInPage";
 import TokensStore from "./Pages/TokensStore";
 import FireblocksForm from "./Pages/FireblocksForm";
 import TokenStore from "./Pages/TokenStore";
+import MintToken from "./Pages/MintToken";
 
 const App = () => {
   useEffect(() => {
@@ -27,7 +28,8 @@ const App = () => {
       <Route path="/custom-token" element={<TokensStore type="custom" />} />
       <Route path="/tokens-store" element={<TokensStore type="fireblocks" />} />
       <Route path="/fireblocks-form" element={<FireblocksForm />} />
-    </Routes>
+      <Route path="/mint" element={<MintToken />} />
+          </Routes>
   );
 };
 
