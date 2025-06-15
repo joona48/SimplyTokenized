@@ -1,6 +1,17 @@
 [
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "symbol",
+				"type": "string"
+			}
+		],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
@@ -13,7 +24,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "allowance",
 				"type": "uint256"
 			},
 			{
@@ -223,12 +234,17 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
 				"internalType": "uint256",
 				"name": "amount",
 				"type": "uint256"
 			}
 		],
-		"name": "mint",
+		"name": "mintTo",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

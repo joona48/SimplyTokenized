@@ -13,7 +13,7 @@ import MintToken from "./Pages/MintToken";
 const App = () => {
   useEffect(() => {
     axios
-      .get("/api") // proxy handles this to http://localhost:5000/
+      .get("/api")
       .then((response) => console.log("Backend says:", response.data))
       .catch((error) => console.error("Backend error:", error.message));
   }, []);
@@ -29,7 +29,7 @@ const App = () => {
       <Route path="/tokens-store" element={<TokensStore type="fireblocks" />} />
       <Route path="/fireblocks-form" element={<FireblocksForm />} />
       <Route path="/mint" element={<MintToken />} />
-          </Routes>
+    </Routes>
   );
 };
 
