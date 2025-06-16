@@ -9,6 +9,7 @@ import TokensStore from "./Pages/TokensStore";
 import FireblocksForm from "./Pages/FireblocksForm";
 import TokenStore from "./Pages/TokenStore";
 import MintToken from "./Pages/MintToken";
+import TokenSummaryPage from "./Pages/TokenSummaryPage";
 
 const App = () => {
   useEffect(() => {
@@ -28,6 +29,7 @@ const App = () => {
       <Route path="/custom-token" element={<TokensStore type="custom" />} />
       <Route path="/tokens-store" element={<TokensStore type="fireblocks" />} />
       <Route path="/fireblocks-form" element={<FireblocksForm />} />
+      <Route path="/token-summary" element={<TokenSummaryPage />} />
       <Route path="/mint" element={<MintToken />} />
     </Routes>
   );
